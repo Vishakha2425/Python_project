@@ -1,0 +1,36 @@
+import requests
+from tkinter import *
+root=Tk()
+def get_city():
+    city_name=box_lab.get()
+    
+    api_key="b4e4caf81c32cfb9a744d9e009179244"
+    weather=requests.get(f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={api_key}")
+    if weather.json()["cod"]=="404":
+        print("Enter Valid City Name!!")
+    else:
+        weat=weather.json()["weather"][0]["main"]
+        temp=weather.json()["main"]["temp"]
+        pre=weather.json()['main']['pressure']
+    text_lab=Label(root,text=(f"weather: {weat}"),fg='Black')
+    text_lab.place(x=200,y=200)
+    text_lab=Label(root,text=(f"temperature: {temp}"),fg='Black',bg='white')
+    text_lab.place(x=200,y=230)
+    text_lab=Label(root,text=(f"pressure: {pre}"),fg='Black',bg='white')
+    text_lab.place(x=200,y=250)
+    lab=Label(root,text=f"City name is : {city_name}",fg="Black",bg="white")
+    lab.place(x=40,y=180)
+
+
+
+root.title("LOGIN")
+root.geometry('500x500')
+text_lab=Label(root,text='Weather Report',fg='Black',bg='white')
+text_lab.pack(pady=(10,10))
+text_lab=Label(root,text='Enter City Name',fg='Black',bg='white')
+text_lab.place(x=40,y=100)
+box_lab=Entry(root,width=30)
+box_lab.place(x=200,y=100) 
+but_lab=Button(root,text="Click",width=8,height=1,command=get_city)
+but_lab.place(x=150,y=140) 
+root.mainloop()
