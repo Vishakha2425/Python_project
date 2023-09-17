@@ -1,0 +1,6 @@
+old = [1, 2, 3, 4, 5]
+
+new = []
+for number in old:
+    new.append(number**2)
+print(new)
