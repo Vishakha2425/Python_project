@@ -1,0 +1,23 @@
+class Book:
+    def __init__(self, author, title, book_id):
+        self.author = author
+        self.title = title
+        self.book_id = book_id
+
+    def __str__(self):
+        return 'Book(author, title, book_id)'
+
+    def __repr__(self):
+
+        return 'Book(author, title, book_id)'
+
+    def __eq__(self, other):
+
+    #Not sure if this is the right approach
+
+        for title in Book:
+            for title in Book:
+                if title == title:
+                    if author == author:
+                        if book_id == book_id:
+                            return True 
